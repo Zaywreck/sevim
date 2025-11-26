@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Sevim İçin 💖</title>
+    <meta
+      name="description"
+      content="Sevim için hazırlanmış küçük bir sürpriz."
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Opening overlay -->
+      <div class="intro" id="intro">
+        <div class="intro-content">
+          <div class="intro-heart"></div>
+          <p class="intro-text">Buraya tıkla Sevim 💕</p>
+          <button class="intro-button" id="startButton">
+            Buraya tıkla
+          </button>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <main class="main">
+        <!-- Canvas background for fireworks -->
+        <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+
+        <!-- Floating hearts container -->
+        <div class="hearts-layer" aria-hidden="true"></div>
+
+        <section class="center-card">
+          <div class="card-glow"></div>
+          <div class="card">
+            <h1 class="card-title">Sevim 💖</h1>
+            <p class="card-subtitle">
+              Bu sayfa sadece senin için hazırlandı.
+            </p>
+
+            <div class="steps" id="steps">
+              <div class="step step-hidden" data-step="1">
+                <p>Her gülüşünle dünyam biraz daha güzelleşiyor.</p>
+              </div>
+              <div class="step step-hidden" data-step="2">
+                <p>Kalbim, adını duyduğum her an yeniden hızlanıyor.</p>
+              </div>
+              <div class="step step-hidden" data-step="3">
+                <p>Sen yanımdayken, her yer en sevdiğim yer oluyor.</p>
+              </div>
+            </div>
+
+            <button class="next-button" id="nextButton">
+              Devam et ✨
+            </button>
+
+            <p class="final-text" id="finalText"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+  </html>
+
+

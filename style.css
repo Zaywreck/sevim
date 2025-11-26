@@ -1,0 +1,363 @@
+*:where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1b0433, #050008 55%, #000000);
+  color: #fff;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+/* Intro overlay */
+.intro {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #ff99c8 0, #5f0a87 45%, #1b0028);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.intro-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.05);
+}
+
+.intro-content {
+  text-align: center;
+  padding: 24px 28px 30px;
+  border-radius: 24px;
+  background: rgba(10, 0, 20, 0.6);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  animation: float 3s ease-in-out infinite;
+}
+
+.intro-heart {
+  width: 56px;
+  height: 50px;
+  position: relative;
+  margin: 0 auto 16px;
+  transform: scale(1.1);
+  animation: heartbeat 1.3s infinite;
+}
+
+.intro-heart::before,
+.intro-heart::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 44px;
+  background: radial-gradient(circle at 30% 20%, #fff, #ff2e7e 50%, #b1004e);
+  border-radius: 28px 28px 0 0;
+  top: 0;
+}
+
+.intro-heart::before {
+  left: 28px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.intro-heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.intro-text {
+  margin: 6px 0 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.intro-button {
+  margin-top: 4px;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #ff9a9e, #ff6a88, #ff99ac);
+  color: #210016;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.7), transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+.intro-button:active {
+  transform: scale(0.97);
+}
+
+/* Canvas for fireworks */
+.fireworks-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Floating hearts layer */
+.hearts-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card */
+.center-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-glow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 131, 215, 0.35), transparent 70%);
+  filter: blur(10px);
+}
+
+.card {
+  position: relative;
+  padding: 22px 20px 20px;
+  border-radius: 24px;
+  background: linear-gradient(150deg, rgba(17, 6, 34, 0.9), rgba(35, 4, 53, 0.9));
+  border: 1px solid rgba(255, 184, 255, 0.28);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  color: #ffe9ff;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 180, 255, 0.12),
+    rgba(11, 0, 20, 0.8)
+  );
+  z-index: -1;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-subtitle {
+  margin: 8px 0 14px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.steps {
+  margin-top: 10px;
+  min-height: 80px;
+}
+
+.step {
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: radial-gradient(
+    circle at 0 0,
+    rgba(255, 255, 255, 0.21),
+    rgba(33, 9, 53, 0.65)
+  );
+  font-size: 0.95rem;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.step-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.step-hidden {
+  display: none;
+}
+
+.next-button {
+  margin-top: 14px;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+  color: #3a001b;
+  cursor: pointer;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+}
+
+.next-button:active {
+  transform: scale(0.98);
+}
+
+.next-button.hidden {
+  display: none;
+}
+
+.final-text {
+  margin-top: 16px;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  min-height: 44px;
+}
+
+.final-text span {
+  display: inline-block;
+}
+
+/* Floating heart pieces */
+.floating-heart {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  transform-origin: center;
+  animation: floatUp 7s linear forwards;
+  opacity: 0;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 20%, #fff, #ff4b8b 60%, #b8005d);
+  border-radius: 10px 10px 0 0;
+  top: 0;
+}
+
+.floating-heart::before {
+  left: 7px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.floating-heart::after {
+  left: 1px;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+/* Animations */
+@keyframes heartbeat {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    transform: scale(1.1);
+  }
+  10%,
+  50%,
+  90% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translate3d(0, 110%, 0) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -10%, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Small screens tweaks */
+@media (max-width: 480px) {
+  .card {
+    padding: 18px 16px 18px;
+    border-radius: 20px;
+  }
+
+  .card-title {
+    font-size: 1.35rem;
+  }
+}
+
+
