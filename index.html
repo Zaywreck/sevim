@@ -9,63 +9,102 @@
     <title>Sevim İçin 💖</title>
     <meta
       name="description"
-      content="Sevim için hazırlanmış küçük bir sürpriz."
+      content="Sevim için şiirlerden oluşan mini sosyal akış."
     />
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <div class="page">
-      <!-- Opening overlay -->
-      <div class="intro" id="intro">
-        <div class="intro-content">
-          <div class="intro-heart"></div>
-          <p class="intro-text">Buraya tıkla Sevim 💕</p>
-          <button class="intro-button" id="startButton">
-            Buraya tıkla
-          </button>
+    <div class="background-glow" aria-hidden="true"></div>
+    <div class="hearts-field" id="heartField" aria-hidden="true"></div>
+
+    <div class="app-shell">
+      <header class="hero">
+        <div class="profile">
+          <div class="avatar">S</div>
+          <div>
+            <h1>Sevim İçin Günlük Akış</h1>
+            <p class="handle">@kalbimdesin • Bugünün kalp notları</p>
+          </div>
         </div>
-      </div>
+        <p class="hero-text">
+          Sanki favori sosyal akışında gezinir gibi,
+          her kaydırmada sana yazdığım satırlar karşına düşsün istedim. Okurken
+          ben de burada, yanında gibi hissedeyim.
+        </p>
+      </header>
 
-      <!-- Main content -->
-      <main class="main">
-        <!-- Canvas background for fireworks -->
-        <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
-
-        <!-- Floating hearts container -->
-        <div class="hearts-layer" aria-hidden="true"></div>
-
-        <section class="center-card">
-          <div class="card-glow"></div>
-          <div class="card">
-            <h1 class="card-title">Sevim 💖</h1>
-            <p class="card-subtitle">
-              Bu sayfa sadece senin için hazırlandı.
-            </p>
-
-            <div class="steps" id="steps">
-              <div class="step step-hidden" data-step="1">
-                <p>Her gülüşünle dünyam biraz daha güzelleşiyor.</p>
-              </div>
-              <div class="step step-hidden" data-step="2">
-                <p>Kalbim, adını duyduğum her an yeniden hızlanıyor.</p>
-              </div>
-              <div class="step step-hidden" data-step="3">
-                <p>Sen yanımdayken, her yer en sevdiğim yer oluyor.</p>
+      <main class="feed" aria-live="polite">
+        <article class="poem-card" aria-label="Paylaşım 1">
+          <div class="post-top">
+            <div class="post-author">
+              <div class="post-avatar">M</div>
+              <div>
+                <span class="name">Mert 💌</span>
+                <span class="meta">@sonsuzvurgun • Şimdi</span>
               </div>
             </div>
-
-            <button class="next-button" id="nextButton">
-              Devam et ✨
-            </button>
-
-            <p class="final-text" id="finalText"></p>
+            <span class="tag">#KalpGünlüğü</span>
           </div>
-        </section>
+          <div class="poem-body">
+            <p>Durgunum bir tek sana vurgunum</p>
+            <p>Yollarında yürür dururum</p>
+            <p>Kollarında bi’hoş olurum</p>
+            <p>Eksikliğinde ben ne’olurum</p>
+            <p>Varlığın benim huzurum</p>
+            <p>Durgunum bir tek sana vurgunum</p>
+            <p class="poem-author">— Mert Gülle</p>
+          </div>
+          <div class="post-actions">
+            <span>💗 1.2K</span>
+            <span>💬 24</span>
+            <span>↻ 56</span>
+          </div>
+        </article>
+
+        <article class="poem-card" aria-label="Paylaşım 2">
+          <div class="post-top">
+            <div class="post-author">
+              <div class="post-avatar">H</div>
+              <div>
+                <span class="name">H. Nihal Atsız</span>
+                <span class="meta">@ateştenmısralar • 5 dk</span>
+              </div>
+            </div>
+            <span class="tag">#AşkınYazdıkları</span>
+          </div>
+          <div class="poem-body">
+            <p>Ey sen ki kül ettin beni onmaz yakışınla,</p>
+            <p>Ey sen ki gönüller tutuşur her bakışınla!…</p>
+            <p>Hançer gibi keskin ve çiçekler gibi ince</p>
+            <p>Çehren bana uğrunda ölüm hazzı verince</p>
+            <p>Gönlümdeki azgın devi rüzgarlara attım;</p>
+            <p>Gözlerle günah işlemenin zevkinin tattım.</p>
+            <p>Gözler ki birer parçasıdır sende İlah’ın,</p>
+            <p>Gözler ki senin en katı zulmün ve silahın,</p>
+            <p>Vur şanlı silahınla gönül mülkü düzelsin;</p>
+            <p>Sen öldürüyorken de, vururken de güzelsin!</p>
+            <p class="poem-author">— H. Nihal Atsız</p>
+          </div>
+          <div class="post-actions">
+            <span>💗 980</span>
+            <span>💬 18</span>
+            <span>↻ 33</span>
+          </div>
+        </article>
       </main>
+
+      <section class="ticker" aria-label="Sonsuz sevgi mesajı">
+        <div class="ticker-track">
+          <span>Seni seviyorum • Sen benim en güzel hikayemsin •</span>
+          <span>Seni seviyorum • Her nefeste adını fısıldıyorum •</span>
+          <span>Seni seviyorum • Kalbim yine sana koşuyor •</span>
+          <span>Seni seviyorum • Sen benim sonsuzluğumsun •</span>
+        </div>
+      </section>
     </div>
 
     <script src="/script.js"></script>
   </body>
-  </html>
+</html>
 
 
